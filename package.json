@@ -1,0 +1,88 @@
+{
+  "name": "physioboard-apc-reader",
+  "version": "0.0.0-semantically-released",
+  "private": true,
+  "description": "Parses and extracts info from NZ Physio board issued certificates",
+  "keywords": [
+    "pdf",
+    "nz",
+    "certificates",
+    "physiotherapy"
+  ],
+  "homepage": "https://github.com/openhealthnz-credentials/physioboard-apc-reader",
+  "bugs": {
+    "url": "https://github.com/openhealthnz-credentials/physioboard-apc-reader/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openhealthnz-credentials/physioboard-apc-reader.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Jasper Miller-Waugh <contact@jmw.nz> (https://github.com/fallstop)",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist/src/"
+  ],
+  "scripts": {
+    "ava": "ava -v",
+    "build": "tsc",
+    "clean": "rimraf --no-glob dist",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "docs": "docs-ts",
+    "lint": "eslint --ext ts . package.json",
+    "lint-staged": "lint-staged",
+    "lint:fix": "eslint --ext ts --fix . package.json",
+    "prepublishOnly": "yarn run clean && yarn test && yarn run build",
+    "prettier": "prettier --list-different .",
+    "prettier:fix": "prettier --write .",
+    "test": "nyc --all ava",
+    "posttest": "yarn run docs"
+  },
+  "pre-commit": "lint-staged",
+  "dependencies": {
+    "@types/pdf-parse": "^1.1.1",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "@ava/typescript": "2",
+    "@ericcrosson/eslint-config": "^3.0.0",
+    "@ericcrosson/prettier-config": "^1.0.0",
+    "@types/node": "^17.0.8",
+    "@types/sinon": "^10.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "ava": "^4.0.1",
+    "codecov": "^3.8.1",
+    "docs-ts": "^0.6.10",
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-ava": "^13.2.0",
+    "eslint-plugin-fp-ts": "^0.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-security": "^1.4.0",
+    "lint-staged": "^12.1.7",
+    "nyc": "^15.1.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "2.5.1",
+    "rimraf": "^3.0.2",
+    "sinon": "^12.0.1",
+    "ts-node": "^10.3.0",
+    "typedoc": "^0.22.10",
+    "typescript": "^4.4.4"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "files": [
+      "!dist/**/*.d.ts",
+      "test/**/*.test.ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  }
+}
