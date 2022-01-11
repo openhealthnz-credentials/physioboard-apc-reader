@@ -51,7 +51,7 @@ Tested on 2021-2022 certificates
 **Signature**
 
 ```ts
-export default function parseCert(inputText: string[]): ParsedApcCert | null
+export declare function parseCert(inputText: string[]): ParsedApcCert | null
 ```
 
 Added in v0.0.0

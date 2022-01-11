@@ -28,7 +28,7 @@ Runs the extracted certificate text against the available certificate profiles
 **Signature**
 
 ```ts
-export default function scanForMatches(inputText: string[]): ParsedApcCert | null
+export declare function scanForMatches(inputText: string[]): ParsedApcCert | null
 ```
 
 Added in v0.0.0
