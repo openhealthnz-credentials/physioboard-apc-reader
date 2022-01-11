@@ -5,8 +5,8 @@ import { ApcFromPDFFile } from '../../src/index'
 test('Valid Cert, without a condition', async (t) => {
   t.deepEqual(await ApcFromPDFFile('./samples/ValidCertWithoutConditions.pdf'), {
     fullName: 'John Doe',
-    issueDate: new Date('1847-03-31T12:20:56.000Z'),
-    expiryDate: new Date('2202-03-30T11:00:00.000Z'),
+    issueDate: new Date('1 April 1847'),
+    expiryDate: new Date('31 March 2202'),
     practiceScope: 'Arson',
     conditions: null,
   })
@@ -15,8 +15,8 @@ test('Valid Cert, without a condition', async (t) => {
 test('Valid Cert, with a short condition', async (t) => {
   t.deepEqual(await ApcFromPDFFile('./samples/ValidCertWithConditions.pdf'), {
     fullName: 'Jane Doe',
-    issueDate: new Date('1847-03-31T12:20:56.000Z'),
-    expiryDate: new Date('2202-03-30T11:00:00.000Z'),
+    issueDate: new Date('1 April 1847'),
+    expiryDate: new Date('31 March 2202'),
     practiceScope: 'Witchcraft',
     conditions: 'Only on Tuesdays',
   })
