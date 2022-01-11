@@ -75,6 +75,11 @@
     "typedoc": "^0.22.10",
     "typescript": "^4.4.4"
   },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "ava": {
     "extensions": [
       "ts"
