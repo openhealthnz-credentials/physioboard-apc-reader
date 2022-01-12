@@ -7,18 +7,22 @@
 
 
   async function scanFiles(uploadEvent: Event) {
+    let inputElement = uploadEvent.target as HTMLInputElement;
 
-    let uploadedFile: File = (uploadEvent.target as HTMLInputElement).files[0];
+    let uploadedFile: File = inputElement.files[0];
     if (uploadedFile) {
+      // Reset it, so it can be re-run with the same file
+      inputElement.value = '';
+
       let formData = new FormData()
       formData.append('data', uploadedFile)
 
-      let scanResults = await fetch(API_URL, {
+      let scanResults = fetch(API_URL, {
         method: 'POST',
         body: formData,
       })
       console.log('Scan Results:', scanResults)
-      showResultModal(await scanResults.json())
+      showResultModal(scanResults)
     }
   }
 
@@ -44,6 +48,7 @@
           console.log(e)
           scanFiles(e)
         }}
+        
       />
     </label>
   </div>

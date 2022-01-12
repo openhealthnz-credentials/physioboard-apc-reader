@@ -21,6 +21,7 @@
     "sass": "^1.47.0",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",
+    "svelte-loading-spinners": "^0.1.7",
     "svelte-preprocess": "^4.9.4",
     "svelte-simple-modal": "^1.2.0",
     "tslib": "^2.3.1",

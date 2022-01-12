@@ -1,7 +1,9 @@
 <script lang="ts">
-  import type path from 'path/posix'
+  import { BarLoader } from 'svelte-loading-spinners'
 
-  export let message:
+  export let message: Promise<Response>
+
+  let api_result:
     | {
         details: ParsedApcCert | null
         status: string
@@ -9,6 +11,12 @@
     | {
         error: string
       }
+    | null = null
+  message
+    .then((response) => response.json())
+    .then((json) => {
+      api_result = json
+    })
 
   interface ParsedApcCert {
     registrationNumber: string
@@ -22,27 +30,34 @@
 </script>
 
 <div class="container">
-  {#if 'error' in message}
-    <div class="error-message">
-      {message.error}
-    </div>
-  {:else if message.details !== null}
-    <table>
-      <tr>
-        <th> key </th>
-        <th> value </th>
-      </tr>
-      {#each Object.keys(message.details) as key}
+  {#if api_result !== null}
+    {#if 'error' in api_result}
+      <div class="error-message">
+        {api_result.error}
+      </div>
+    {:else if api_result.details !== null}
+      <table>
         <tr>
-          <td>{key}</td>
-          <td>{message.details[key]}</td>
+          <th> key </th>
+          <th> value </th>
         </tr>
-      {/each}
-    </table>
+        {#each Object.keys(api_result.details) as key}
+          <tr>
+            <td>{key}</td>
+            <td>{api_result.details[key]}</td>
+          </tr>
+        {/each}
+      </table>
+    {:else}
+      <div class="error-message">
+        Certificate did not match any known Physioboard APC certificates. Make sure you
+        upload the original APC certificate that was sent to you electronically.
+      </div>
+    {/if}
   {:else}
-    <div class="error-message">
-      Certificate did not match any known Physioboard APC certificates. Make sure you
-      upload the original APC certificate that was sent to you electronically.
+    <!-- Still Loading -->
+    <div class="loading-wrapper">
+      <BarLoader color="#5dbb65" duration="1.1s" />
     </div>
   {/if}
 </div>
@@ -82,6 +97,10 @@
     }
     .error-message {
       padding: 1rem;
+    }
+
+    .loading-wrapper {
+      margin: 2rem 1rem;
     }
   }
 </style>
