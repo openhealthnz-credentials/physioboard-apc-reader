@@ -36,6 +36,7 @@ export function parseCert(inputText: string[]): ParsedApcCert | null {
   if (!/^70-\d{5}$/g.test(inputText[3])) {
     return null
   }
+  const registrationNumber = inputText[3]
 
   // CPN Number, would be possible to validate check digit, but not needed
   // See here for more info:
@@ -43,6 +44,7 @@ export function parseCert(inputText: string[]): ParsedApcCert | null {
   if (!/^\d{2}[A-Z ]{4}$/g.test(inputText[4])) {
     return null
   }
+  const hpiCpnID = inputText[4]
 
   // At this point we are pretty sure it's the correct certificate
   // So we can start parsing the data
@@ -58,6 +60,8 @@ export function parseCert(inputText: string[]): ParsedApcCert | null {
   const conditions: string | null = inputText.length == 10 ? inputText[9] : null
 
   return {
+    registrationNumber,
+    hpiCpnID,
     fullName,
     issueDate,
     expiryDate,
@@ -72,6 +76,8 @@ export function parseCert(inputText: string[]): ParsedApcCert | null {
  * @since 0.0.0
  */
 export interface ParsedApcCert {
+  registrationNumber: string
+  hpiCpnID: string
   fullName: string
   issueDate: Date
   expiryDate: Date

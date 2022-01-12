@@ -11,6 +11,8 @@
       }
 
   interface ParsedApcCert {
+    registrationNumber: string
+    hpiCpnID: string
     fullName: string
     issueDate: Date
     expiryDate: Date
@@ -21,9 +23,9 @@
 
 <div class="container">
   {#if 'error' in message}
-  <div class="error-message">
-    {message.error}
-  </div>
+    <div class="error-message">
+      {message.error}
+    </div>
   {:else if message.details !== null}
     <table>
       <tr>
@@ -38,9 +40,10 @@
       {/each}
     </table>
   {:else}
-  <div class="error-message">
-    Certificate did not match any known Physioboard APC certificates. Make sure you upload the original APC certificate that was sent to you electronically.
-  </div>
+    <div class="error-message">
+      Certificate did not match any known Physioboard APC certificates. Make sure you
+      upload the original APC certificate that was sent to you electronically.
+    </div>
   {/if}
 </div>
 
@@ -78,7 +81,7 @@
       border-right: 1px solid $table-border-color;
     }
     .error-message {
-        padding: 1rem;
+      padding: 1rem;
     }
   }
 </style>
