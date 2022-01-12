@@ -10,8 +10,7 @@ const router = express.Router()
 const { ApcFromPDFBuffer } = require("@openhealthnz-credentials/physioboard-apc-reader");
 
 router.use(compression())
-router.use(cors())
-
+app.use(cors())
 app.use(fileUpload());
 
 
