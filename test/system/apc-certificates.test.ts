@@ -7,6 +7,8 @@ test('Valid Cert, without a condition', async (t) => {
     fullName: 'John Doe',
     issueDate: new Date('1 April 1847'),
     expiryDate: new Date('31 March 2202'),
+    hpiCpnID: '69BETA',
+    registrationNumber: '70-42069',
     practiceScope: 'Arson',
     conditions: null,
   })
@@ -17,6 +19,8 @@ test('Valid Cert, with a short condition', async (t) => {
     fullName: 'Jane Doe',
     issueDate: new Date('1 April 1847'),
     expiryDate: new Date('31 March 2202'),
+    hpiCpnID: '69NEIN',
+    registrationNumber: '70-69420',
     practiceScope: 'Witchcraft',
     conditions: 'Only on Tuesdays',
   })

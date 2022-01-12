@@ -32,6 +32,8 @@ Object for successfully parsed Physioboard APC issued certificates
 
 ```ts
 export interface ParsedApcCert {
+  registrationNumber: string
+  hpiCpnID: string
   fullName: string
   issueDate: Date
   expiryDate: Date
