@@ -15,8 +15,8 @@
  */
 export function parseCert(inputText: string[]): ParsedApcCert | null {
   // Lines without a condition = 9
-  // Condition max num of lines = 4
-  if (inputText.length < 9) {
+  // Max reasonable lines = 18
+  if (inputText.length < 9 && inputText.length > 18) {
     return null
   }
 
