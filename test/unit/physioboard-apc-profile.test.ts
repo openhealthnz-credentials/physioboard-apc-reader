@@ -68,3 +68,20 @@ test(
   ['CIRTIPHICATE', 'Jon dough', 'Is licensed to', 'Practise Practising'],
   null,
 )
+
+test(
+  'Certificate that has a the issue and expiry date in reverse order',
+  parseExtractedText,
+  [
+    '2021/2022',
+    'This certificate is for the year commencing 1 April 2021. It should be available for inspection by ',
+    'your employer and clients. It must be surrendered to the Board upon request.',
+    '70-42069',
+    '69BETA',
+    'John Doe',
+    '31 March 2202',
+    '1 April 1847',
+    'Arson',
+  ],
+  null,
+)

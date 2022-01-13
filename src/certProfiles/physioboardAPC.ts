@@ -14,7 +14,9 @@
  * @since 0.0.0
  */
 export function parseCert(inputText: string[]): ParsedApcCert | null {
-  if (!(inputText.length == 9 || inputText.length == 10)) {
+  // Lines without a condition = 9
+  // Condition max num of lines = 4
+  if (inputText.length < 9) {
     return null
   }
 
@@ -51,13 +53,20 @@ export function parseCert(inputText: string[]): ParsedApcCert | null {
   const fullName = inputText[5]
   const issueDate = new Date(inputText[6])
   const expiryDate = new Date(inputText[7])
-  if (isNaN(issueDate.getTime()) || isNaN(expiryDate.getTime())) {
+  if (
+    isNaN(issueDate.getTime()) ||
+    isNaN(expiryDate.getTime()) ||
+    issueDate.getTime() > expiryDate.getTime()
+  ) {
     return null
   }
 
   const practiceScope = inputText[8]
 
-  const conditions: string | null = inputText.length == 10 ? inputText[9] : null
+  let conditions: string | null = null
+  if (inputText.length > 9) {
+    conditions = inputText.slice(9).join('')
+  }
 
   return {
     registrationNumber,
