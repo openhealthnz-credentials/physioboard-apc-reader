@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@openhealthnz-credentials/physioboard-apc-reader@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@openhealthnz-credentials/physioboard-apc-reader/-/physioboard-apc-reader-1.0.0.tgz#a5cb1f5df78b47d5c5567a31a80d7101fac01f8e"
-  integrity sha512-j9jsz1THjAD94OZNj3A7RlxfRheePtcaLZU8KD7G+eMfif1pILTA4mPD1G37Qbf1rYcs2qDXAzQuAXzQs3Os/A==
+"@openhealthnz-credentials/physioboard-apc-reader@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@openhealthnz-credentials/physioboard-apc-reader/-/physioboard-apc-reader-1.2.2.tgz#cd61f8df9a595867395e6c68d9c5f9b99ac16010"
+  integrity sha512-UhKcfxZhrM7b2lzBoDNPEw/QQDss7VOlE92NDEccNdmGro3AkPt74QrLDWVGuX50asBnKsd8qEEoaBpLpwJj/Q==
   dependencies:
     pdf-parse "^1.1.1"
 
