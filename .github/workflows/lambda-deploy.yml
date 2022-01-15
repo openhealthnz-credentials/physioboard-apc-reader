@@ -20,6 +20,7 @@ jobs:
           node-version: '14'
       - run: npm install yarn -g
       - run: yarn install
+        working-directory: lambda-service
       # AWS SAM Deploy 
       - run: SAM_CLI_TELEMETRY=0 sam build --use-container
         working-directory: lambda-service
