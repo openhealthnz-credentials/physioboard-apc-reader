@@ -1,4 +1,4 @@
 {
     "schemaVersion": 2,
-    "dockerfilePath": "./lambda-service/Dockerfile.captain"
+    "dockerfilePath": "./docker-service/Dockerfile.captain"
 }

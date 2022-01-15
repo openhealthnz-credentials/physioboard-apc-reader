@@ -1,0 +1,17 @@
+{
+  "name": "lambda-service",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@openhealthnz-credentials/physioboard-apc-reader": "latest",
+    "@vendia/serverless-express": "^4.5.2",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "express-fileupload": "^1.2.1"
+  }
+}

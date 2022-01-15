@@ -1,8 +1,0 @@
-FROM node:14-alpine
-RUN mkdir -p /usr/src/app
-COPY ./lambda-service  /usr/src/app
-
-WORKDIR /usr/src/app
-
-RUN yarn --frozen-lockfile
-CMD [ "yarn", "start" ]  

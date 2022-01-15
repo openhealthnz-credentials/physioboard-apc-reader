@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "apc-reader"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1fzf583hrspzi"
+s3_prefix = "apc-reader"
+region = "ap-southeast-2"
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
+confirm_changeset = true

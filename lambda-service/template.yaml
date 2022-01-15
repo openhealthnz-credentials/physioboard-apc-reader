@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Physioboard APC Reader
+Globals:
+  Function:
+    Timeout: 16
+
+Resources:
+  ApcReaderLambda:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs14.x
+      CodeUri: ./
+      Description: ''
+      MemorySize: 128
+      Architectures:
+      # Ideally it would run on arm64, but waiting for this to be resolved:
+      # https://github.com/aws/aws-sam-cli/issues/3331
+        - x86_64
+      Role: >-
+        arn:aws:iam::753346888149:role/service-role/apcReaderLambda-role-lbcyomtr
+      Events:
+        ReadAPC:
+          Type: HttpApi
+          Properties:
+            Path: /readAPC
+            Method: post
+
+Outputs:
+  ApcReaderApi:
+    Description: "API Gateway endpoint URL for Prod stage for ApcReader Lambda Function"
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/${ServerlessHttpApiApiGatewayDefaultStage}/readAPC/"
